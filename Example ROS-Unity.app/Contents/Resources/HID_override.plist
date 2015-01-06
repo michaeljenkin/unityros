@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<!-- Some joysticks report wrong min/max values for the joystick. This plist lets you override those joystick axes -->
+	<!-- You can view your joystick's axes using hid explorer:  www.otee.dk/utilities/hid_explorer.zip -->
+
+	<!-- Vendor ID : SAITEK -->
+	<key>1699</key>
+	<dict>
+		<!-- Product ID :Cyborg 3D USB -->
+		<key>6</key>
+		<dict>
+			<!-- Minimum and maximum axis value for usagePage 1 and usage 48 (X Axis) -->
+			<key>Min 1:48</key>			<string>20</string>
+			<key>Max 1:48</key>			<string>170</string>			<!-- Y Axis -->			<key>Min 1:49</key>			<string>20</string>			<key>Max 1:49</key>			<string>170</string>			<!-- Z Axis (stick twist) -->			<key>Min 1:53</key>			<string>15</string>			<key>Max 1:53</key>			<string>190</string>			<!-- Slider -->			<key>Min 1:54</key>			<string>20</string>			<key>Max 1:54</key>			<string>180</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
