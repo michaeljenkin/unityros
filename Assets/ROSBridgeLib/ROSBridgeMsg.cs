@@ -10,8 +10,13 @@ using SimpleJSON;
  * ROSBRidgePacket class which encapsulates the top of the ROSBridge messages which are not
  * empty, and (ii) someday ROS may actually define a  minimal message.
  * 
+ * Version History
+ * 3.1 - changed methods to start with an upper case letter to be more consistent with c#
+ * style.
+ * 3.0 - modification from hand crafted version 2.0
+ * 
  * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
- * @version 3.0
+ * @version 3.1
  */
 
 public class ROSBridgeMsg  {
@@ -26,38 +31,38 @@ public class ROSBridgeMsg  {
 		return x.ToString();
 	}
 
-	public static string advertise(string messageTopic, string messageType) {
+	public static string Advertise(string messageTopic, string messageType) {
 		return "{\"op\": \"advertise\", \"topic\": \"" + messageTopic + "\", \"type\": \"" + messageType + "\"}";
 	}
 	
-	public static string unAdvertise(string messageTopic) {
+	public static string UnAdvertise(string messageTopic) {
 		return "{\"op\": \"unadvertise\", \"topic\": \"" + messageTopic + "\"}";
 	}
 	
-	public static string publish(string messageTopic, string message) {
+	public static string Publish(string messageTopic, string message) {
 		return "{\"op\": \"publish\", \"topic\": \"" + messageTopic + "\", \"msg\": " + message + "}";
 	}
 	
-	public static string subscribe(string messageTopic) {
+	public static string Subscribe(string messageTopic) {
 		return "{\"op\": \"subscribe\", \"topic\": \"" + messageTopic +  "\"}";
 	}
 	
-	public static string subscribe(string messageTopic, string messageType) {
+	public static string Subscribe(string messageTopic, string messageType) {
 		return "{\"op\": \"subscribe\", \"topic\": \"" + messageTopic +  "\", \"type\": \"" + messageType + "\"}";
 	}
 	
-	public static string unSubscribe(string messageTopic) {
+	public static string UnSubscribe(string messageTopic) {
 		return "{\"op\": \"unsubscribe\", \"topic\": \"" + messageTopic +  "\"}";
 	}
 	
-	public static string callService(string service, string args) {
+	public static string CallService(string service, string args) {
 		if((args == null)|| args.Equals(""))
 			return "{\"op\": \"call_service\", \"service\": \"" + service +  "\"}";
 		else
 			return "{\"op\": \"call_service\", \"service\": \"" + service +  "\", \"args\" : " + args + "}";
 	}
 	
-	public static string callService(string service) {
+	public static string CallService(string service) {
 		return "{\"op\": \"call_service\", \"service\": \"" + service +  "\"}";
 	}
 	

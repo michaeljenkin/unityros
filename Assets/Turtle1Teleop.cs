@@ -16,15 +16,15 @@ using UnityEngine;
 
 public class Turtle1Teleop: ROSBridgePublisher {
 	
-	public static string getMessageTopic() {
+	public static string GetMessageTopic() {
 		return "/turtle1/command_velocity";
 	}  
 	
-	public static string getMessageType() {
+	public static string GetMessageType() {
 		return "turtlesim/Velocity";
 	}
 
-	public static string toYAMLString(VelocityMsg msg) {
+	public static string ToYAMLString(VelocityMsg msg) {
 		return msg.ToYAMLString ();
 	}
 }

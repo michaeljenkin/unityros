@@ -19,10 +19,10 @@ using UnityEngine;
 
 public class Turtle1ServiceResponse  {
 
-	public static void serviceCallBack(string service, string response) {
+	public static void ServiceCallBack(string service, string response) {
 		if(response == null)
-			Debug.Log ("serviceCallback for service " + service);
+			Debug.Log ("ServiceCallback for service " + service);
 		else
-			Debug.Log ("serviceCallback for service " + service + " response " + response);
+			Debug.Log ("ServiceCallback for service " + service + " response " + response);
 	}
 }

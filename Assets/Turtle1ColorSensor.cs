@@ -18,19 +18,19 @@ using UnityEngine;
 
 public class Turtle1ColorSensor : ROSBridgeSubscriber {
 	
-	public static string getMessageTopic() {
+	public new static string GetMessageTopic() {
 		return "/turtle1/color_sensor";
 	}  
 	
-	public static string getMessageType() {
+	public new static string GetMessageType() {
 		return "turtlesim/Color";
 	}
 	
-	public static ROSBridgeMsg parseMessage(JSONNode msg) {
+	public new static ROSBridgeMsg ParseMessage(JSONNode msg) {
 		return new ColorMsg(msg);
 	}
 	
-	public static void callBack(ROSBridgeMsg msg) {
+	public new static void CallBack(ROSBridgeMsg msg) {
 		Debug.Log ("Render callback in /turtle1/color_sensor" + msg);
 	}
 }

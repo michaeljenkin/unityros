@@ -25,13 +25,13 @@ public class TurtlesimViewer : MonoBehaviour  {
 	void Start () {
 		FloorTile.Floor (0, 0, 12, 12);
 		_useJoysticks = Input.GetJoystickNames ().Length > 0;
-		ros = new ROSBridgeWebSocketConnection ("ws://10.0.1.95", 9090);
-		ros.addSubscriber (typeof(Turtle1ColorSensor));
-		ros.addSubscriber (typeof(Turtle1Pose));
-		ros.addPublisher (typeof(Turtle1Teleop));
-		ros.addServiceResponse (typeof(Turtle1ServiceResponse));
+		ros = new ROSBridgeWebSocketConnection ("ws://130.63.93.66", 9090);
+		ros.AddSubscriber (typeof(Turtle1ColorSensor));
+		ros.AddSubscriber (typeof(Turtle1Pose));
+		ros.AddPublisher (typeof(Turtle1Teleop));
+		ros.AddServiceResponse (typeof(Turtle1ServiceResponse));
 		ros.Connect ();
-		ros.callService ("/turtle1/set_pen", "{\"off\": 0}");
+		ros.CallService ("/turtle1/set_pen", "{\"off\": 0}");
 		lineOn = true;
 	}
 
@@ -54,22 +54,23 @@ public class TurtlesimViewer : MonoBehaviour  {
 		} else {
 			_dx = Input.GetAxis("Horizontal");
 			_dy = Input.GetAxis ("Vertical");
+			Debug.Log ("no joysticks " + _dx + " " + _dy);
 		}
 		float linear = _dy * 0.5f;
 		float angular = -_dx * 0.2f;
 
 		VelocityMsg msg = new VelocityMsg (linear, angular);
 
-		ros.publish (Turtle1Teleop.getMessageTopic (), msg);
+		ros.Publish (Turtle1Teleop.GetMessageTopic (), msg);
 
 		if (Input.GetKeyDown (KeyCode.T)) {
 			if (lineOn)
-				ros.callService ("/turtle1/set_pen", "{\"off\": 1}");
+				ros.CallService ("/turtle1/set_pen", "{\"off\": 1}");
 			else
-				ros.callService ("/turtle1/set_pen", "{\"off\": 0}");
+				ros.CallService ("/turtle1/set_pen", "{\"off\": 0}");
 			lineOn = !lineOn;
 		}
-		ros.render ();
+		ros.Render ();
 
 	}
 }

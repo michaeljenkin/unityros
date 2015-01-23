@@ -1,3 +1,8 @@
+Version 3.1
+
+Major change here is to make the c# method names all upper case and to add better comments
+
+Version  3.0
 Its self documenting (ha).
 
 So its a unity project, with two basic libraries
@@ -13,3 +18,10 @@ Fire up the turtle simulator under ros along with rosbridge web socket server. T
 The cursor keys are used to generate tele operational instructions for the turtle simulator in ros, which in turn moves the turtle, which in turn moves the robot in unity.
 
 As a final example, the T key is tied to a ros service, that turns the pen on and off on the turtle simulator. 
+
+Note: SimpleJSON is included here as a convenience. It has its own licensing requirements. See source code
+and unity store for details.
+
+Version 2.0
+
+A hacked up version for the CSA demo

@@ -19,26 +19,26 @@ using UnityEngine;
 
 public class Turtle1Pose : ROSBridgeSubscriber {
 	
-	public static string getMessageTopic() {
+	public new static string GetMessageTopic() {
 		return "/turtle1/pose";
 	}  
 	
-	public static string getMessageType() {
+	public new static string GetMessageType() {
 		return "turtlesim/Pose";
 	}
 	
-	public static ROSBridgeMsg parseMessage(JSONNode msg) {
+	public new static ROSBridgeMsg ParseMessage(JSONNode msg) {
 		return new PoseMsg(msg);
 	}
 	
-	public static void callBack(ROSBridgeMsg msg) {
+	public new static void CallBack(ROSBridgeMsg msg) {
 		GameObject robot = GameObject.Find ("Dalek");
 		if (robot == null)
 			Debug.Log ("Can't find the robot???");
 		else {
 			PoseMsg pose = (PoseMsg) msg;
-			robot.transform.position = new Vector3(pose.getX (), 0.2f, pose.getY());
-			robot.transform.rotation = Quaternion.AngleAxis (-pose.getTheta() * 180.0f / 3.1415f, Vector3.up);
+			robot.transform.position = new Vector3(pose.GetX (), 0.2f, pose.GetY());
+			robot.transform.rotation = Quaternion.AngleAxis (-pose.GetTheta() * 180.0f / 3.1415f, Vector3.up);
 		}
 	}
 }

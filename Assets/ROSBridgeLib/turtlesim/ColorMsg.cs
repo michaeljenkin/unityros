@@ -2,6 +2,17 @@
 using System.Text;
 using SimpleJSON;
 
+/**
+ * Define a turtle colour message. This has been hand-crafted from the corresponding
+ * turtle message file.
+ * 
+ * Version History
+ * 3.1 - changed methods to start with an upper case letter to be more consistent with c#
+ * style.
+ * 3.0 - modification from hand crafted version 2.0
+ * 
+ */
+
 namespace ROSBridgeLib {
 	namespace turtlesim {
 		public class ColorMsg : ROSBridgeMsg {
@@ -19,19 +30,19 @@ namespace ROSBridgeLib {
 				_b = b;
 			}
 			
-			public static string getMessageType() {
+			public static string GetMessageType() {
 				return "turtlesim/Color";
 			}
 			
-			public int getR() {
+			public int GetR() {
 				return _r;
 			}
 			
-			public int getG() {
+			public int GetG() {
 				return _g;
 			}
 
-			public int getB() {
+			public int GetB() {
 				return _b;
 			}
 			

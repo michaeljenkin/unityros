@@ -2,6 +2,17 @@
 using System.Text;
 using SimpleJSON;
 
+/**
+ * Define a turtle pose message. This has been hand-crafted from the corresponding
+ * turtle message file.
+ * 
+ * Version History
+ * 3.1 - changed methods to start with an upper case letter to be more consistent with c#
+ * style.
+ * 3.0 - modification from hand crafted version 2.0
+ * 
+ */
+
 namespace ROSBridgeLib {
 	namespace turtlesim {
 		public class PoseMsg : ROSBridgeMsg {
@@ -27,23 +38,23 @@ namespace ROSBridgeLib {
 				return "turtlesim/Pose";
 			}
 			
-			public float getX() {
+			public float GetX() {
 				return _x;
 			}
 			
-			public float getY() {
+			public float GetY() {
 				return _y;
 			}
 			
-			public float getTheta() {
+			public float GetTheta() {
 				return _theta;
 			}
 
-			public float getLinear_Velocity() {
+			public float GetLinear_Velocity() {
 				return _linear_velocity;
 			}
 			
-			public float getAngular_Velocity() {
+			public float GetAngular_Velocity() {
 				return _angular_velocity;
 			}
 			

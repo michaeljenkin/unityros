@@ -9,22 +9,27 @@ using SimpleJSON;
  * Subscribers require a ROSBridgePacket to subscribe to (its type). They need the name of
  * the message, and they need something to draw it. 
  * 
+ * Version History
+ * 3.1 - changed methods to start with an upper case letter to be more consistent with c#
+ * style.
+ * 3.0 - modification from hand crafted version 2.0
+ * 
  * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
- * @version 3.0
+ * @version 3.1
  */
 
 namespace ROSBridgeLib {
 	public class ROSBridgeSubscriber {
 
-		public static string getMessageTopic() {
+		public static string GetMessageTopic() {
 			return null;
 		}  
 
-		public static string getMessageType() {
+		public static string GetMessageType() {
 			return null;
 		}
 
-		public static ROSBridgeMsg parseMessage(JSONNode msg) {
+		public static ROSBridgeMsg ParseMessage(JSONNode msg) {
 			return null;
 		}
 
