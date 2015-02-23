@@ -9,7 +9,9 @@ namespace ROSBridgeLib {
             private uint _size, _stride;
 			
 			public MultiArrayDimensionMsg(JSONNode msg) {
-				_data = string.Parse(msg["data"]);
+				_label = msg["label"];
+				_size = uint.Parse(msg["size"]);
+				_stride = uint.Parse(msg["stride"]);
 			}
 			
             public MultiArrayDimensionMsg(string label, uint size, uint stride) {
@@ -18,7 +20,7 @@ namespace ROSBridgeLib {
                 _stride = stride;
 			}
 			
-			public static string getMessageType() {
+			public static string GetMessageType() {
 				return "std_msgs/MultiArrayDimension";
 			}
 

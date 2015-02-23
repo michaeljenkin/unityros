@@ -5,14 +5,18 @@ using SimpleJSON;
 namespace ROSBridgeLib {
 	namespace std_msgs {
 		public class MultiArrayLayoutMsg : ROSBridgeMsg {
-			private MultiArrayDimension[] _dim;
+			private MultiArrayDimensionMsg[] _dim;
             private uint _data_offset;
 			
 			public MultiArrayLayoutMsg(JSONNode msg) {
-				_data = string.Parse(msg["data"]);
+				_data_offset = uint.Parse(msg["data_offset"]);
+				_dim = new MultiArrayDimensionMsg[msg["dim"].Count];
+				for (int i = 0; i < _dim.Length; i++) {
+					_dim[i] = new MultiArrayDimensionMsg(msg["dim"][i]);
+				}
 			}
 			
-			public MultiArrayLayoutMsg(MultiArrayDimension[] dim, uint data_offset) {
+			public MultiArrayLayoutMsg(MultiArrayDimensionMsg[] dim, uint data_offset) {
                 _dim = dim;
                 _data_offset = data_offset;
 			}
@@ -21,7 +25,7 @@ namespace ROSBridgeLib {
 				return "std_msgs/MultiArrayLayout";
 			}
 			
-			public MultiArrayDimension[] GetDim() {
+			public MultiArrayDimensionMsg[] GetDim() {
 				return _dim;
 			}
 
@@ -33,7 +37,7 @@ namespace ROSBridgeLib {
                 string array = "[";
                 for (int i = 0; i < _dim.Length; i++) {
                     array = array + _dim[i].ToString();
-                    if (_data.Length - i <= 1)
+                    if (_dim.Length - i <= 1)
                         array += ",";
                 }
                 array += "]";
@@ -44,7 +48,7 @@ namespace ROSBridgeLib {
                 string array = "[";
                 for (int i = 0; i < _dim.Length; i++) {
                     array = array + _dim[i].ToYAMLString();
-                    if (_data.Length - i <= 1)
+                    if (_dim.Length - i <= 1)
                         array += ",";
                 }
                 array += "]";

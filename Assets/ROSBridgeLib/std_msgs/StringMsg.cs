@@ -8,7 +8,7 @@ namespace ROSBridgeLib {
 			private string _data;
 			
 			public StringMsg(JSONNode msg) {
-				_data = string.Parse(msg["data"]);
+				_data = msg["data"];
 			}
 			
 			public StringMsg(string data) {

@@ -8,7 +8,7 @@ namespace ROSBridgeLib {
 			private long _data;
 			
 			public Int64Msg(JSONNode msg) {
-				_data = msg["data"]);
+				_data = long.Parse(msg["data"]);
 			}
 			
 			public Int64Msg(long data) {

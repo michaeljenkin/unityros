@@ -10,9 +10,9 @@ namespace ROSBridgeLib {
 
             public UInt16MultiArrayMsg(JSONNode msg) {
                 _layout = new MultiArrayLayoutMsg(msg["layout"]);
-                _data = new ulong[msg["data"].Length];
-                for (int i = 0; i < msg["data"].Length; i++) {
-                    _data[i] = msg["data"][i].AsInt;
+                _data = new ushort[msg["data"].Count];
+				for (int i = 0; i < _data.Length; i++) {
+                    _data[i] = ushort.Parse(msg["data"][i]);
                 }
             }
 
@@ -21,19 +21,15 @@ namespace ROSBridgeLib {
                 _data = data;
             }
 
-            public static string getMessageType() {
+            public static string GetMessageType() {
                 return "std_msgs/UInt16MultiArray";
             }
 
-            public MultiArrayLayoutMsg getLayout() {
-                return _layout;
-            }
-
-            public ushort[] getData() {
+            public ushort[] GetData() {
                 return _data;
             }
 
-            public MultiArrayLayoutMsg getLayout() {
+            public MultiArrayLayoutMsg GetLayout() {
                 return _layout;
             }
 

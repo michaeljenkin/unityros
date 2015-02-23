@@ -10,9 +10,9 @@ namespace ROSBridgeLib {
 
             public Int32MultiArrayMsg(JSONNode msg) {
                 _layout = new MultiArrayLayoutMsg(msg["layout"]);
-                _data = new ulong[msg["data"].Length];
-                for (int i = 0; i < msg["data"].Length; i++) {
-                    _data[i] = msg["data"][i].AsInt;
+                _data = new int[msg["data"].Count];
+				for (int i = 0; i < _data.Length; i++) {
+                    _data[i] = int.Parse(msg["data"][i]);
                 }
             }
 
@@ -25,15 +25,11 @@ namespace ROSBridgeLib {
                 return "std_msgs/Int32MultiArray";
             }
 
-            public MultiArrayLayoutMsg getLayout() {
-                return _layout;
-            }
-
-            public int[] getData() {
+            public int[] GetData() {
                 return _data;
             }
 
-            public MultiArrayLayoutMsg getLayout() {
+            public MultiArrayLayoutMsg GetLayout() {
                 return _layout;
             }
 

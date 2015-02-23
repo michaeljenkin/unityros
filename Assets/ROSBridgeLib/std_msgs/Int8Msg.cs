@@ -8,10 +8,10 @@ namespace ROSBridgeLib {
 			private sbyte _data;
 			
 			public Int8Msg(JSONNode msg) {
-				_data = msg["data"].AsInt;
+				_data = sbyte.Parse(msg["data"]);
 			}
 			
-			public Int8Msg(byte data) {
+			public Int8Msg(sbyte data) {
 				_data = data;
 			}
 			
