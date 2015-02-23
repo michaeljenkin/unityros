@@ -1,3 +1,7 @@
+Version 3.2
+
+Updated turtlesim example to work with ROS Hydro and added some geometry message files
+
 Version 3.1
 
 Major change here is to make the c# method names all upper case and to add better comments
