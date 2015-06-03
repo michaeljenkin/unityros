@@ -20,8 +20,8 @@ namespace ROSBridgeLib {
 			private int _secs, _nsecs;
 
 			public TimeMsg(JSONNode msg) {
-				_secs = int.Parse(msg["data"]["secs"]);
-				_nsecs = int.Parse (msg["data"]["nsecs"]);
+				_secs = int.Parse(msg["secs"]);
+				_nsecs = int.Parse (msg["nsecs"]);
 			}
 
 			public TimeMsg(int secs, int nsecs) {

@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{541EE70A-7643-DF44-B223-5B453CF6F3BD}</ProjectGuid>
+	<ProjectGuid>{ECE4D0F9-18B5-2F84-E89C-26F982E61E21}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_4;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,22 +46,47 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EddyOperator.cs" />
      <Compile Include="Assets\FloorTile.cs" />
      <Compile Include="Assets\FollowCamera.cs" />
+     <Compile Include="Assets\PixPro.cs" />
      <Compile Include="Assets\ROSBridgeLib\ROSBridgeMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\ROSBridgePublisher.cs" />
      <Compile Include="Assets\ROSBridgeLib\ROSBridgeSubscriber.cs" />
      <Compile Include="Assets\ROSBridgeLib\ROSBridgeWebSocketConnection.cs" />
+     <Compile Include="Assets\ROSBridgeLib\geometry_msgs\TwistMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\geometry_msgs\Vector3Msg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\sensor_msgs\CompressedImageMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\HeaderMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\Int32Msg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\Int32MultiArrayMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\Int64Msg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\Int64MultiArrayMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\Int8Msg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\Int8MultiArrayMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\MultiArrayDimensionMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\MultiArrayLayoutMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\StringMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\std_msgs\TimeMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt16Msg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt16MultiArrayMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt32Msg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt32MultiArrayMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt64Msg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt64MultiArrayMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt8Msg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt8MultiArrayMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\turtlesim\ColorMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\turtlesim\PoseMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\turtlesim\VelocityMsg.cs" />
      <Compile Include="Assets\SimpleJSON.cs" />
+     <Compile Include="Assets\SimpleSmoothMouseLook.cs" />
      <Compile Include="Assets\Turtle1ColorSensor.cs" />
      <Compile Include="Assets\Turtle1Pose.cs" />
      <Compile Include="Assets\Turtle1ServiceResponse.cs" />
      <Compile Include="Assets\Turtle1Teleop.cs" />
      <Compile Include="Assets\TurtlesimViewer.cs" />
+     <None Include="Assets\SkysphereShader.shader" />
  <Reference Include="Assets\ROSBridgeLib\websocket-sharp">
  <HintPath>Assets\ROSBridgeLib\websocket-sharp.dll</HintPath>
  </Reference>

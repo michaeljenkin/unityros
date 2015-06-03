@@ -6,6 +6,7 @@
 /* * * * *
  * A simple JSON Parser / builder
  * ------------------------------
+ * Modified to use StringBuilder for string arguments.
  * 
  * It mainly has been written as a simple JSON parser. It can build a JSON string
  * from the node-tree, or generate a node tree from any valid JSON string.
@@ -46,6 +47,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
  
  
 namespace SimpleJSON
@@ -233,7 +235,8 @@ namespace SimpleJSON
             Stack<JSONNode> stack = new Stack<JSONNode>();
             JSONNode ctx = null;
             int i = 0;
-            string Token = "";
+            // string Token = "";
+			StringBuilder Token = new StringBuilder ();
             string TokenName = "";
             bool QuoteMode = false;
             while (i < aJSON.Length)
@@ -243,7 +246,7 @@ namespace SimpleJSON
                     case '{':
                         if (QuoteMode)
                         {
-                            Token += aJSON[i];
+                            Token.Append (aJSON[i]);
                             break;
                         }
                         stack.Push(new JSONClass());
@@ -256,14 +259,14 @@ namespace SimpleJSON
                                 ctx.Add(TokenName,stack.Peek());
                         }
                         TokenName = "";
-                        Token = "";
+						Token = new StringBuilder();
                         ctx = stack.Peek();
                     break;
  
                     case '[':
                         if (QuoteMode)
                         {
-                            Token += aJSON[i];
+                            Token.Append (aJSON[i]);
                             break;
                         }
  
@@ -277,7 +280,7 @@ namespace SimpleJSON
                                 ctx.Add(TokenName,stack.Peek());
                         }
                         TokenName = "";
-                        Token = "";
+						Token = new StringBuilder();
                         ctx = stack.Peek();
                     break;
  
@@ -285,23 +288,23 @@ namespace SimpleJSON
                     case ']':
                         if (QuoteMode)
                         {
-                            Token += aJSON[i];
+                            Token.Append (aJSON[i]);
                             break;
                         }
                         if (stack.Count == 0)
                             throw new Exception("JSON Parse: Too many closing brackets");
  
                         stack.Pop();
-                        if (Token != "")
+                        if (Token.Length != 0)
                         {
                             TokenName = TokenName.Trim();
                             if (ctx is JSONArray)
-                                ctx.Add(Token);
+                                ctx.Add(Token.ToString ());
                             else if (TokenName != "")
-                                ctx.Add(TokenName,Token);
+                                ctx.Add(TokenName,Token.ToString ());
                         }
                         TokenName = "";
-                        Token = "";
+						Token = new StringBuilder();
                         if (stack.Count>0)
                             ctx = stack.Peek();
                     break;
@@ -309,11 +312,11 @@ namespace SimpleJSON
                     case ':':
                         if (QuoteMode)
                         {
-                            Token += aJSON[i];
+                            Token.Append (aJSON[i]);
                             break;
                         }
-                        TokenName = Token;
-                        Token = "";
+                        TokenName = Token.ToString ();
+					    Token = new StringBuilder();
                     break;
  
                     case '"':
@@ -323,18 +326,18 @@ namespace SimpleJSON
                     case ',':
                         if (QuoteMode)
                         {
-                            Token += aJSON[i];
+                            Token.Append (aJSON[i]);
                             break;
                         }
-                        if (Token != "")
+                        if (Token.Length != 0)
                         {
                             if (ctx is JSONArray)
-                                ctx.Add(Token);
+                                ctx.Add(Token.ToString ());
                             else if (TokenName != "")
-                                ctx.Add(TokenName, Token);
+                                ctx.Add(TokenName, Token.ToString ());
                         }
                         TokenName = "";
-                        Token = "";
+					    Token = new StringBuilder();
                     break;
  
                     case '\r':
@@ -344,7 +347,7 @@ namespace SimpleJSON
                     case ' ':
                     case '\t':
                         if (QuoteMode)
-                            Token += aJSON[i];
+                            Token.Append (aJSON[i]);
                     break;
  
                     case '\\':
@@ -354,25 +357,25 @@ namespace SimpleJSON
                             char C = aJSON[i];
                             switch (C)
                             {
-                                case 't' : Token += '\t'; break;
-                                case 'r' : Token += '\r'; break;
-                                case 'n' : Token += '\n'; break;
-                                case 'b' : Token += '\b'; break;
-                                case 'f' : Token += '\f'; break;
+                                case 't' : Token.Append ('\t'); break;
+                                case 'r' : Token.Append ('\r'); break;
+                                case 'n' : Token.Append ('\n'); break;
+                                case 'b' : Token.Append ('\b'); break;
+                                case 'f' : Token.Append ('\f'); break;
                                 case 'u':
                                 {
                                     string s = aJSON.Substring(i+1,4);
-                                    Token += (char)int.Parse(s, System.Globalization.NumberStyles.AllowHexSpecifier);
+                                    Token.Append ((char)int.Parse(s, System.Globalization.NumberStyles.AllowHexSpecifier));
                                     i += 4;
                                     break;
                                 }
-                                default  : Token += C; break;
+                                default  : Token.Append (C); break;
                             }
                         }
                     break;
  
                     default:
-                        Token += aJSON[i];
+                        Token.Append (aJSON[i]);
                     break;
                 }
                 ++i;

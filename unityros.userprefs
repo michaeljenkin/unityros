@@ -1,0 +1,31 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TurtlesimViewer.cs">
+    <Files>
+      <File FileName="Assets/PixPro.cs" Line="37" Column="25" />
+      <File FileName="Assets/ROSBridgeLib/sensor_msgs/CompressedImageMsg.cs" Line="48" Column="107" />
+      <File FileName="Assets/ROSBridgeLib/ROSBridgeWebSocketConnection.cs" Line="1" Column="1" />
+      <File FileName="Assets/EddyOperator.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/std_msgs/TimeMsg.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/std_msgs/Int8Msg.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/std_msgs/HeaderMsg.cs" Line="1" Column="1" />
+      <File FileName="Assets/TurtlesimViewer.cs" Line="56" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/std_msgs/Int32Msg.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/std_msgs/Int64Msg.cs" Line="1" Column="1" />
+      <File FileName="Assets/Turtle1Teleop.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/std_msgs/UInt16MultiArrayMsg.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/std_msgs/UInt16Msg.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/turtlesim/ColorMsg.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/turtlesim/PoseMsg.cs" Line="1" Column="1" />
+      <File FileName="Assets/ROSBridgeLib/turtlesim/VelocityMsg.cs" Line="1" Column="1" />
+      <File FileName="Assets/Turtle1Pose.cs" Line="1" Column="1" />
+      <File FileName="Assets/SkysphereShader.shader" Line="40" Column="16" />
+      <File FileName="Assets/SimpleJSON.cs" Line="1" Column="1" />
+      <File FileName="Assets/FollowCamera.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
