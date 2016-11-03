@@ -80,6 +80,7 @@
      <Compile Include="Assets\ROSBridgeLib\turtlesim\PoseMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\turtlesim\VelocityMsg.cs" />
      <Compile Include="Assets\RealsensePointCloud.cs" />
+     <Compile Include="Assets\RealsenseServiceResponse.cs" />
      <Compile Include="Assets\RealsenseViewer.cs" />
      <Compile Include="Assets\SimpleJSON.cs" />
      <Compile Include="Assets\Turtle1ColorSensor.cs" />

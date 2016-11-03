@@ -16,8 +16,8 @@ public class RealsenseViewer : MonoBehaviour  {
 
 				ros = new ROSBridgeWebSocketConnection ("ws://localhost", 9090);
 
-				ros.AddSubscriber (typeof(Turtle1ColorSensor));
-				ros.AddServiceResponse (typeof(Turtle1ServiceResponse));
+				ros.AddSubscriber (typeof(RealsensePointCloud));
+				ros.AddServiceResponse (typeof(RealsenseServiceResponse));
 				ros.Connect ();
 		}
 
