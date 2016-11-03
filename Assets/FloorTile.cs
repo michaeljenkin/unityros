@@ -24,9 +24,10 @@ public static class FloorTile  {
 				obj.transform.position = new Vector3 (x0 + i, 0, z0 + j);
 				obj.transform.rotation = pose;
 				if (white)
-					obj.renderer.material.color = new Color (255, 255, 255);
+					obj.GetComponent<Renderer>().material.color = new Color (255, 255, 255);
 				else
-					obj.renderer.material.color = new Color (255, 0, 0);
+					obj.GetComponent<Renderer>().material.color = Color.grey;
+				
 				white = !white;
 			}
 		}

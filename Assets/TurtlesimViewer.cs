@@ -26,7 +26,9 @@ public class TurtlesimViewer : MonoBehaviour  {
 	void Start () {
 		FloorTile.Floor (0, 0, 12, 12);
 		_useJoysticks = Input.GetJoystickNames ().Length > 0;
-		ros = new ROSBridgeWebSocketConnection ("ws://10.0.1.63", 9090);
+		
+		ros = new ROSBridgeWebSocketConnection ("ws://localhost", 9090);
+		
 		ros.AddSubscriber (typeof(Turtle1ColorSensor));
 		ros.AddSubscriber (typeof(Turtle1Pose));
 		ros.AddPublisher (typeof(Turtle1Teleop));
@@ -34,6 +36,7 @@ public class TurtlesimViewer : MonoBehaviour  {
 		ros.Connect ();
 		ros.CallService ("/turtle1/set_pen", "{\"off\": 0}");
 		lineOn = true;
+		
 	}
 
 	// extremely important to disconnect from ROS. OTherwise packets continue to flow
