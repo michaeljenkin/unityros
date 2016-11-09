@@ -4,7 +4,6 @@ using ROSBridgeLib;
 using System.Reflection;
 using System;
 using ROSBridgeLib.sensor_msgs;
-using ROSBridgeLib.realsense;
 
 public class RealsenseViewer : MonoBehaviour  {
 		private ROSBridgeWebSocketConnection ros = null;	

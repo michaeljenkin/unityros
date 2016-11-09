@@ -55,8 +55,8 @@
      <Compile Include="Assets\ROSBridgeLib\ROSBridgeWebSocketConnection.cs" />
      <Compile Include="Assets\ROSBridgeLib\geometry_msgs\TwistMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\geometry_msgs\Vector3Msg.cs" />
-     <Compile Include="Assets\ROSBridgeLib\realsense\PointCloudMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\sensor_msgs\CompressedImageMsg.cs" />
+     <Compile Include="Assets\ROSBridgeLib\sensor_msgs\PointCloudMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\std_msgs\HeaderMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\std_msgs\Int32Msg.cs" />
      <Compile Include="Assets\ROSBridgeLib\std_msgs\Int32MultiArrayMsg.cs" />
