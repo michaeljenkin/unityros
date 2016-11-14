@@ -24,6 +24,6 @@ public class RealsensePointCloud : ROSBridgeSubscriber
 
 		public new static void CallBack(ROSBridgeMsg msg)
 		{
-				Debug.Log ("Render callback in /camera/depth/points" + msg);
+				//Debug.Log ("Render callback in /camera/depth/points" + msg);
 		}
 }

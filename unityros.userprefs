@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ROSBridgeLib/std_msgs/UInt16MultiArrayMsg.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ROSBridgeLib/sensor_msgs/PointCloudMsg.cs">
     <Files>
-      <File FileName="Assets/ROSBridgeLib/sensor_msgs/PointCloudMsg.cs" Line="27" Column="40" />
+      <File FileName="Assets/ROSBridgeLib/sensor_msgs/PointCloudMsg.cs" Line="35" Column="50" />
       <File FileName="Assets/PixPro.cs" Line="1" Column="1" />
-      <File FileName="Assets/ROSBridgeLib/sensor_msgs/CompressedImageMsg.cs" Line="26" Column="44" />
+      <File FileName="Assets/ROSBridgeLib/sensor_msgs/CompressedImageMsg.cs" Line="1" Column="1" />
       <File FileName="Assets/ROSBridgeLib/ROSBridgeWebSocketConnection.cs" Line="1" Column="1" />
       <File FileName="Assets/ROSBridgeLib/std_msgs/TimeMsg.cs" Line="1" Column="1" />
       <File FileName="Assets/ROSBridgeLib/std_msgs/Int8Msg.cs" Line="1" Column="1" />
@@ -20,14 +20,30 @@
       <File FileName="Assets/Turtle1Pose.cs" Line="1" Column="1" />
       <File FileName="Assets/SkysphereShader.shader" Line="1" Column="1" />
       <File FileName="Assets/FollowCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/RealsenseViewer.cs" Line="1" Column="1" />
+      <File FileName="Assets/RealsenseViewer.cs" Line="18" Column="50" />
       <File FileName="Assets/Turtle1ColorSensor.cs" Line="1" Column="1" />
       <File FileName="Assets/Turtle1ServiceResponse.cs" Line="1" Column="1" />
       <File FileName="Assets/RealsenseServiceResponse.cs" Line="1" Column="1" />
-      <File FileName="Assets/RealsensePointCloud.cs" Line="2" Column="32" />
+      <File FileName="Assets/RealsensePointCloud.cs" Line="22" Column="36" />
       <File FileName="Assets/SimpleJSON.cs" Line="1" Column="1" />
-      <File FileName="Assets/ROSBridgeLib/std_msgs/HeaderMsg.cs" Line="27" Column="35" />
+      <File FileName="Assets/ROSBridgeLib/std_msgs/HeaderMsg.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="unityros" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="ROSBridgeLib" expanded="True">
+                <Node name="sensor_msgs" expanded="True">
+                  <Node name="PointCloudMsg.cs" selected="True" />
+                </Node>
+                <Node name="std_msgs" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

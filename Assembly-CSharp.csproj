@@ -83,11 +83,6 @@
      <Compile Include="Assets\RealsenseServiceResponse.cs" />
      <Compile Include="Assets\RealsenseViewer.cs" />
      <Compile Include="Assets\SimpleJSON.cs" />
-     <Compile Include="Assets\Turtle1ColorSensor.cs" />
-     <Compile Include="Assets\Turtle1Pose.cs" />
-     <Compile Include="Assets\Turtle1ServiceResponse.cs" />
-     <Compile Include="Assets\Turtle1Teleop.cs" />
-     <Compile Include="Assets\TurtlesimViewer.cs" />
      <None Include="Assets\SkysphereShader.shader" />
      <None Include="Assets\CMakeLists.txt" />
  <Reference Include="UnityEngine.Advertisements">

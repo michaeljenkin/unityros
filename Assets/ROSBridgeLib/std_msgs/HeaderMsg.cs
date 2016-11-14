@@ -20,12 +20,12 @@ namespace ROSBridgeLib {
 			private string _frame_id;
 			
 			public HeaderMsg(JSONNode msg) {
-				Debug.Log ("HeaderMsg with " + msg.ToString ());
+				//Debug.Log ("HeaderMsg with " + msg.ToString ());
 				_seq = int.Parse (msg["seq"]);
 				_stamp = new TimeMsg (msg ["stamp"]);
 				_frame_id = msg["frame_id"];
-				Debug.Log ("HeaderMsg done ");
-				Debug.Log (" and it looks like " + this.ToString ());
+				//Debug.Log ("HeaderMsg done ");
+				//Debug.Log (" and it looks like " + this.ToString ());
 			}
 			
 			public HeaderMsg(int seq, TimeMsg stamp, string frame_id) {
