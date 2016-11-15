@@ -5,6 +5,12 @@ using SimpleJSON;
 using ROSBridgeLib.std_msgs;
 using UnityEngine;
 
+/**
+ * Define a point cloud message.
+ * 
+ * @author Mathias Ciarlo Thorstensen
+ */
+
 namespace ROSBridgeLib {
 		namespace sensor_msgs {
 				public class PointCloudMsg : ROSBridgeMsg {

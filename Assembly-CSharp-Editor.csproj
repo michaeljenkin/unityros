@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\editor\FindMissingScripts.cs" />
-     <None Include="Assets\SkysphereShader.shader" />
      <None Include="Assets\CMakeLists.txt" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>

@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\FloorTile.cs" />
      <Compile Include="Assets\FollowCamera.cs" />
-     <Compile Include="Assets\PixPro.cs" />
      <Compile Include="Assets\ROSBridgeLib\ROSBridgeMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\ROSBridgePublisher.cs" />
      <Compile Include="Assets\ROSBridgeLib\ROSBridgeSubscriber.cs" />
@@ -76,14 +75,11 @@
      <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt64MultiArrayMsg.cs" />
      <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt8Msg.cs" />
      <Compile Include="Assets\ROSBridgeLib\std_msgs\UInt8MultiArrayMsg.cs" />
-     <Compile Include="Assets\ROSBridgeLib\turtlesim\ColorMsg.cs" />
-     <Compile Include="Assets\ROSBridgeLib\turtlesim\PoseMsg.cs" />
-     <Compile Include="Assets\ROSBridgeLib\turtlesim\VelocityMsg.cs" />
-     <Compile Include="Assets\RealsensePointCloud.cs" />
+     <Compile Include="Assets\RealsenseCompressedImageSubscriber.cs" />
+     <Compile Include="Assets\RealsensePointCloudSubscriber.cs" />
      <Compile Include="Assets\RealsenseServiceResponse.cs" />
      <Compile Include="Assets\RealsenseViewer.cs" />
      <Compile Include="Assets\SimpleJSON.cs" />
-     <None Include="Assets\SkysphereShader.shader" />
      <None Include="Assets\CMakeLists.txt" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using ROSBridgeLib;
-using System.Reflection;
 using System;
 using ROSBridgeLib.sensor_msgs;
 
@@ -15,7 +14,8 @@ public class RealsenseViewer : MonoBehaviour  {
 
 				ros = new ROSBridgeWebSocketConnection ("ws://localhost", 9090);
 
-				ros.AddSubscriber (typeof(RealsensePointCloud));
+				//ros.AddSubscriber (typeof(RealsensePointCloudSubscriber));
+				ros.AddSubscriber (typeof(RealsenseCompressedImageSubscriber));
 				ros.AddServiceResponse (typeof(RealsenseServiceResponse));
 				ros.Connect ();
 		}
@@ -33,6 +33,5 @@ public class RealsenseViewer : MonoBehaviour  {
 
 				// This might tell the websocket it finished rendering, not sure though
 				ros.Render ();
-
 		}
 }
