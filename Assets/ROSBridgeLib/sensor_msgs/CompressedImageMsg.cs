@@ -53,7 +53,7 @@ namespace ROSBridgeLib {
 				return "{\"format\" : " + "\"" + _format + "\", \"data\" : \"" + System.Convert.ToBase64String (_data) + "\", \"header\" : " + _header.ToYAMLString () + "}";
 			}
 			
-			In private void Test() {
+			private void Test() {
 				Texture2D tex = new Texture2D (640, 480);
                 tex.LoadImage (_data);
                 Debug.Log (tex.GetPixel(0,0).ToString());
