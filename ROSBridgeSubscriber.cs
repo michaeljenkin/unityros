@@ -33,7 +33,7 @@ namespace ROSBridgeLib {
 			return null;
 		}
 
-		public static void callBack(ROSBridgeMsg msg) {
+		public static void CallBack(ROSBridgeMsg msg) {
 		}
 	}
 }

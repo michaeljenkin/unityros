@@ -8,7 +8,7 @@ namespace ROSBridgeLib {
 			private ulong _data;
 			
 			public Uint64Msg(JSONNode msg) {
-				_data = ulong.Parse(msg["data"]);
+				_data = ulong.Parse(msg);
 			}
 			
 			public Uint64Msg(ulong data) {
