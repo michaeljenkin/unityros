@@ -5,6 +5,8 @@ using SimpleJSON;
 /**
  * Define a geometry_msgs quaternion message. This has been hand-crafted from the corresponding
  * geometry_msgs message file.
+ * 
+ * @author Miquel Massot Campos
  */
 
 namespace ROSBridgeLib {

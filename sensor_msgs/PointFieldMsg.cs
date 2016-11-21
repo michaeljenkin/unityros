@@ -6,6 +6,7 @@ using UnityEngine;
 
 /**
  * Define a PointCloud2 message.
+ * @author Miquel Massot Campos
  */
 
 // Datatype:

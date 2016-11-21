@@ -6,6 +6,8 @@ using UnityEngine;
 /**
  * Define a geographic_msgs GeoPoint message. This has been hand-crafted from the corresponding
  * geographic_msgs message file.
+ * 
+ * @author Miquel Massot Campos
  */
 
 namespace ROSBridgeLib {

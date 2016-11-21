@@ -10,6 +10,8 @@ using PointCloud;
 
 /**
  * Define a PointCloud2 message.
+ *  
+ * @author Miquel Massot Campos
  */
 
 namespace ROSBridgeLib {
@@ -23,7 +25,6 @@ namespace ROSBridgeLib {
 			private bool _is_dense;
 			private uint _point_step;
 			private uint _row_step;
-			private byte[] _data;
 			private PointCloud<PointXYZRGB> _cloud;
 
 
@@ -91,22 +92,15 @@ namespace ROSBridgeLib {
 				return _row_step;
 			}
 
-			//public PointCloud<PointXYZRGB> GetCloud() {
-			//	return _cloud;
-			//}
+			public PointCloud<PointXYZRGB> GetCloud() {
+				return _cloud;
+			}
 
 			public static string GetMessageType() {
 				return "sensor_msgs/PointCloud2";
 			}
 
 			public override string ToString() {
-				string array = "[";
-                for (int i = 0; i < _data.Length; i++) {
-                    array = array + _data[i];
-                    if (_data.Length - i <= 1)
-                        array += ",";
-                }
-                array += "]";
 				return "PointCloud2 [header=" + _header.ToString() +
 						"height=" + _height +
 						"width=" + _width +
@@ -114,18 +108,10 @@ namespace ROSBridgeLib {
 						"is_bigendian=" + _is_bigendian +
 						"is_dense=" + _is_dense +
 						"point_step=" + _point_step +
-						"row_step=" + _row_step +
-						"data=" + array + "]";
+						"row_step=" + _row_step + "]";
 			}
 
 			public override string ToYAMLString() {
-				string array = "[";
-                for (int i = 0; i < _data.Length; i++) {
-                    array = array + _data[i];
-                    if (_data.Length - i <= 1)
-                        array += ",";
-                }
-                array += "]";
 				return "{\"header\" :" + _header.ToYAMLString() +
 						"\"height\" :" + _height +
 						"\"width\" :" + _width +
@@ -133,8 +119,7 @@ namespace ROSBridgeLib {
 						"\"is_bigendian\" :" + _is_bigendian +
 						"\"is_dense\" :" + _is_dense +
 						"\"point_step\" :" + _point_step +
-						"\"row_step\" :" + _row_step +
-						"\"data\" :" + array + "}";
+						"\"row_step\" :" + _row_step + "}";
 			}
 		}
 	}

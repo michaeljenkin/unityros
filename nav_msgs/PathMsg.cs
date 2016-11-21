@@ -4,7 +4,13 @@ using System.Text;
 using SimpleJSON;
 using ROSBridgeLib.std_msgs;
 using ROSBridgeLib.geometry_msgs;
-// Need geometry_msgs/PoseStamped[]
+
+/**
+ * Define a nav_msgs Path message. This has been hand-crafted from the corresponding
+ * nav_msgs message file.
+ * 
+ * @author Miquel Massot Campos
+ */
 
 namespace ROSBridgeLib {
 	namespace nav_msgs {
@@ -19,32 +25,47 @@ namespace ROSBridgeLib {
 					_poses.Add(new PoseStampedMsg(msg["poses"][i]));
 				}
 			}
-			
-/* 			public CompressedImageMsg(JSONNode msg) {
-				_format = msg ["format"];
-				_header = new HeaderMsg (msg ["header"]);
-				//_poses = 
-			} */
-			
-/* 			public static string GetMessageType() {
-				return "geometry_msgs/Twist";
-			} */
-			
-/* 			public HeaderMsg GetHeader() {
-				return _header;
-			} */
 
-/* 			public PoseStamped[] GetPoses() {
-				return _poses;
-			} */
-/* 			
-			public override string ToString() {
-				return "Twist [linear=" + _linear.ToString() + ",  angular=" + _angular.ToString() + "]";
+			public static string GetMessageType() {
+				return "nav_msgs/Path";
 			}
-			
+
+			public HeaderMsg GetHeader() {
+				return _header;
+			}
+
+			public PoseStampedMsg GetPoseStamped(int idx = 0) {
+				if (idx < _poses.Count) {
+					return _poses [idx];
+				} else {
+					return null;
+				}
+			}
+
+			public override string ToString() {
+				string array = "[";
+				for (int i = 0; i < _poses.Count; i++) {
+					array = array + _poses[i].ToString();
+					if (_poses.Count - i <= 1)
+						array += ",";
+				}
+				array += "]";
+
+				return "Path [header=" + _header.ToString() 
+					+ ",  poses=" + array + "]";
+			}
+
 			public override string ToYAMLString() {
-				return "{\"linear\" : " + _linear.ToYAMLString() + ", \"angular\" : " + _angular.ToYAMLString() + "}";
-			} */
+				string array = "{";
+				for (int i = 0; i < _poses.Count; i++) {
+					array = array + _poses[i].ToYAMLString();
+					if (_poses.Count - i <= 1)
+						array += ",";
+				}
+				array += "}";
+				return "{\"header\" : " + _header.ToYAMLString() 
+					+ ", \"poses\" : " + array + "}";
+			}
 		}
 	}
 }

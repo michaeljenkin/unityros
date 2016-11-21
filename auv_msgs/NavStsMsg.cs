@@ -9,6 +9,8 @@ using UnityEngine;
 /**
  * Define a auv_msgs NavSts  message. This has been hand-crafted from the corresponding
  * auv_msgs message file.
+ * 
+ * @author Miquel Massot Campos
  */
 
 namespace ROSBridgeLib {

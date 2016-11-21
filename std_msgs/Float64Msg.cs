@@ -9,7 +9,6 @@ namespace ROSBridgeLib {
 			private double _data;
 			
 			public Float64Msg(JSONNode msg) {
-				//Debug.Log ("Float64Msg with " + msg.ToString());
 				_data = double.Parse(msg);
 			}
 			
