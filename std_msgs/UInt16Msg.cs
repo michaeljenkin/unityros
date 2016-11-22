@@ -8,7 +8,7 @@ namespace ROSBridgeLib {
 			private ushort _data;
 			
 			public UInt16Msg(JSONNode msg) {
-				_data = ushort.Parse(msg["data"]);
+				_data = ushort.Parse(msg);
 			}
 			
 			public UInt16Msg(ushort data) {
