@@ -3,6 +3,11 @@ using System.Text;
 using SimpleJSON;
 using ROSBridgeLib.geometry_msgs;
 
+/* 
+ * @brief ROSBridgeLib
+ * @author Michael Jenkin, Robert Codd-Downey, Andrew Speers and Miquel Massot Campos
+ */
+
 namespace ROSBridgeLib {
 	namespace geometry_msgs {
 		public class Vector3Msg : ROSBridgeMsg {

@@ -2,6 +2,11 @@ using System.Collections;
 using System.Text;
 using SimpleJSON;
 
+/* 
+ * @brief ROSBridgeLib
+ * @author Michael Jenkin, Robert Codd-Downey, Andrew Speers and Miquel Massot Campos
+ */
+
 namespace ROSBridgeLib {
 	namespace std_msgs {
 		public class UInt32Msg : ROSBridgeMsg {

@@ -5,7 +5,7 @@ using ROSBridgeLib.std_msgs;
 using UnityEngine;
 
 /**
- * Define a PointCloud2 message.
+ * Define a PointField message.
  * @author Miquel Massot Campos
  */
 
