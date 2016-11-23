@@ -4,6 +4,11 @@ using SimpleJSON;
 using ROSBridgeLib.std_msgs;
 using ROSBridgeLib.geometry_msgs;
 
+/* 
+ * @brief ROSBridgeLib
+ * @author Michael Jenkin, Robert Codd-Downey, Andrew Speers and Miquel Massot Campos
+ */
+
 namespace ROSBridgeLib {
 	namespace nav_msgs {
 		public class OdometryMsg : ROSBridgeMsg {

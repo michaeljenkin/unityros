@@ -7,7 +7,7 @@ using UnityEngine;
  * Define a geometry_msgs point message. This has been hand-crafted from the corresponding
  * geometry_msgs message file.
  * 
- * @author Miquel Massot Campos
+ * @author Michael Jenkin, Robert Codd-Downey, Andrew Speers and Miquel Massot Campos
  */
 
 namespace ROSBridgeLib {
