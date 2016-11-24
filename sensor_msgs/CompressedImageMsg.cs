@@ -27,8 +27,6 @@ namespace ROSBridgeLib {
 				_format = msg ["format"];
 				_header = new HeaderMsg (msg ["header"]);
 				_data = System.Convert.FromBase64String(msg ["data"]);
-
-                if (! done) Test ();
 			}
 			
 			public CompressedImageMsg(HeaderMsg header, string format, byte[] data) {
@@ -52,13 +50,6 @@ namespace ROSBridgeLib {
 			public override string ToYAMLString() {
 				return "{\"format\" : " + "\"" + _format + "\", \"data\" : \"" + System.Convert.ToBase64String (_data) + "\", \"header\" : " + _header.ToYAMLString () + "}";
 			}
-			
-			private void Test() {
-				Texture2D tex = new Texture2D (640, 480);
-                tex.LoadImage (_data);
-                Debug.Log (tex.GetPixel(0,0).ToString());
-                done = true;
-        	}
 		}
 	}
 }
