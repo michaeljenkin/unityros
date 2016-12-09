@@ -16,8 +16,6 @@ using UnityEngine;
 namespace ROSBridgeLib {
 	namespace sensor_msgs {
 		public class CompressedImageMsg : ROSBridgeMsg {
-            static bool done = false;
-
 			private string _format;
 			private byte[] _data;
 			private HeaderMsg _header;

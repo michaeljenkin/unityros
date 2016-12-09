@@ -196,7 +196,7 @@ using UnityEngine;
                 //Debug.Log ("Operation is " + op);
                 if ("publish".Equals (op)) {
 		 			string topic = node["topic"];
-                    Debug.Log ("Got a message on " + topic);
+                    //Debug.Log ("Got a message on " + topic);
 		 			foreach(Type p in _subscribers) {
 		 				if(topic.Equals (GetMessageTopic (p))) {
                             //Debug.Log ("And will parse it " + GetMessageTopic (p));
