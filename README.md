@@ -1,31 +1,44 @@
-Version 3.2
+# ROSBridgeLib
+A Unity library for communicattion with ROS through [RosBridge](http://wiki.ros.org/rosbridge_suite)
 
-Updated turtlesim example to work with ROS Hydro and added some geometry message files
+The first version of this I believe origins from [Michael Jenkin](https://github.com/michaeljenkin), in the repo [unityros](https://github.com/michaeljenkin/unityros). He has made a sample unity project showing turtlesim, with good instructions on how to use this project. All honor goes to him. I created this project because there was no repository containing the barebone library.
 
-Version 3.1
+This repository is intended to be imported as a git [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
-Major change here is to make the c# method names all upper case and to add better comments
+## Included messages
+This repository does not contain every ROS message. If you need to add one, please fork this repository, add the file and make a pull request.
 
-Version  3.0
-Its self documenting (ha).
+## Documentation
+Documentation is in the code. I have added some more in addition to what Michael Jenkin (original
+author). The main file is ROSBridgeWebSocketConnection.cs, which sets up everything.
 
-So its a unity project, with two basic libraries
-	* SimpleJSON - to do the basic JSON work
-	* ROSBridgeLib - to do the ROSBridge-Unity heavy lifting
+## Example usage
+A Unity project which uses this repository [UnityROSSensorVisualizer](https://github.com/MathiasCiarlo/UnityROSSensorVisualizer):
 
-There is a sample application built at the top of the library. It requires a ROS world somewhere running the turtlesim package along with rosbridge. Turtlesim made some changes after groovy, and this has only been tested with groovy, so I would start there.
+``` cs
+public class RealsenseViewer : MonoBehaviour  {
+  private ROSBridgeWebSocketConnection ros = null;
+    
+  void Start() {
+    ros = new ROSBridgeWebSocketConnection ("ws://localhost", 9090);
+    ros.AddSubscriber (typeof(RealsenseCompressedImageSubscriber));
+    ros.AddServiceResponse (typeof(RealsenseServiceResponse));
+    ros.Connect ();
+  }
+  
+  // Extremely important to disconnect from ROS. OTherwise packets continue to flow
+  void OnApplicationQuit() {
+    if(ros!=null) {
+      ros.Disconnect ();
+    }
+  }
+  
+  // Update is called once per frame in Unity
+  void Update () {
+    ros.Render ();
+  }
+}
+```
 
-There is one hard coded constant in TurtleSimViewer - the ip address of the host running the rosbridge package.
-
-Fire up the turtle simulator under ros along with rosbridge web socket server. Then fire up the unity program. with luck (?) you should see a checkerboard with a robot on it. The robot is listening to the location of the turtle and updating its location and orientation as appropriate. So if you teleoperate the turtle around its motion should be tracked by the unity robot. The unity camera is slaved to the robot.
-
-The cursor keys are used to generate tele operational instructions for the turtle simulator in ros, which in turn moves the turtle, which in turn moves the robot in unity.
-
-As a final example, the T key is tied to a ros service, that turns the pen on and off on the turtle simulator. 
-
-Note: SimpleJSON is included here as a convenience. It has its own licensing requirements. See source code
-and unity store for details.
-
-Version 2.0
-
-A hacked up version for the CSA demo
+## License
+Note: SimpleJSON is included here as a convenience. It has its own licensing requirements. See source code and unity store for details.
