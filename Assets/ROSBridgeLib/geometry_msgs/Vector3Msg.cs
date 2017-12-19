@@ -3,6 +3,16 @@ using System.Text;
 using SimpleJSON;
 using ROSBridgeLib.geometry_msgs;
 
+/**
+ * Define a Vector3 message. These have been hand-crafted from the corresponding msg file.
+ * 
+ * Version History
+ *  3.3 - added to std_msgs for consistency
+ * 
+ * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
+ * @version 3.3
+ */
+
 namespace ROSBridgeLib {
 	namespace geometry_msgs {
 		public class Vector3Msg : ROSBridgeMsg {
