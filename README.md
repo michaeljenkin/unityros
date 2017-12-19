@@ -1,3 +1,14 @@
+Version 3.3
+
+Updated everything to work with ROS Indigo.  All of the std_msgs are now there, although some of the more less often
+used ones are not fully debugged. 
+
+Cleaned up the repository somewhat, removing files not directly source code related.
+
+Updated the TurtleSimViewer application so that the parameters are visible in the editor.
+
+Removed unnecessary files from the repository
+
 Version 3.2
 
 Updated turtlesim example to work with ROS Hydro and added some geometry message files
