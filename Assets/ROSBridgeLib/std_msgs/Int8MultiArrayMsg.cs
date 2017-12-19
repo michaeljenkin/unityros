@@ -2,6 +2,16 @@ using System.Collections;
 using System.Text;
 using SimpleJSON;
 
+/**
+ * Define an Int8MultiArray message. These have been hand-crafted from the corresponding msg file.
+ * 
+ * Version History
+ * 3.3 - added to std_msgs for consistency
+ * 
+ * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
+ * @version 3.3
+ */
+
 namespace ROSBridgeLib {
 	namespace std_msgs {
         public class Int8MultiArrayMsg : ROSBridgeMsg {
