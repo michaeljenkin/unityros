@@ -22,13 +22,16 @@ public class TurtlesimViewer : MonoBehaviour  {
 	private Boolean _useJoysticks;
 	private Boolean lineOn;
 
+	public string ROSBridgeWS = "ws://10.0.1.63";
+
 	// the critical thing here is to define our subscribers, publishers and service response handlers
 	void Start () {
 		FloorTile.Floor (0, 0, 12, 12);
 		_useJoysticks = Input.GetJoystickNames ().Length > 0;
-		ros = new ROSBridgeWebSocketConnection ("ws://10.0.1.63", 9090);
+		ros = new ROSBridgeWebSocketConnection (ROSBridgeWS, 9090);
 		ros.AddSubscriber (typeof(Turtle1ColorSensor));
 		ros.AddSubscriber (typeof(Turtle1Pose));
+		ros.AddSubscriber (typeof(Turtle1String));
 		ros.AddPublisher (typeof(Turtle1Teleop));
 		ros.AddServiceResponse (typeof(Turtle1ServiceResponse));
 		ros.Connect ();
@@ -55,7 +58,7 @@ public class TurtlesimViewer : MonoBehaviour  {
 		} else {
 			_dx = Input.GetAxis("Horizontal");
 			_dy = Input.GetAxis ("Vertical");
-			Debug.Log ("no joysticks " + _dx + " " + _dy);
+			//Debug.Log ("no joysticks " + _dx + " " + _dy);
 		}
 		float linear = _dy * 0.5f;
 		float angular = -_dx * 0.2f;

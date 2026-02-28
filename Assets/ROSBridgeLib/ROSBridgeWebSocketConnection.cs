@@ -63,6 +63,7 @@ namespace ROSBridgeLib {
 		private string _serviceName = null;
 		private string _serviceValues = null;
 		private List<RenderTask> _taskQ = new List<RenderTask>();
+		private List<JSONNode> _fragments = new List<JSONNode>();
 
 		private object _queueLock = new object ();
 
@@ -187,19 +188,67 @@ namespace ROSBridgeLib {
 			}
 		}
 
+		private JSONNode ProcessFragment(JSONNode node) {
+			Debug.Log("Processing a fragment");
+			string id;
+			int num, total;
+			try {
+				id = node["id"];
+				num = int.Parse(node["num"]);
+				total = int.Parse(node["total"]);
+				Debug.Log($"fragment has id {id} and is {num} of {total}");
+			} catch(Exception e) {
+				Debug.Log($"Unable to parse fragment fields {e}");
+				return (JSONNode) null;
+			}
+
+			// add it. It makes counting easier later
+			_fragments.Add(node); 
+			int count = 0;
+			for(int i=0;i<_fragments.Count;i++) {
+				if(_fragments[i]["id"].Equals(id)) {
+					count++;
+				}
+			}
+
+			Debug.Log($"Have {count} fragments for id {id} need {total} ");
+			if(total == count) {
+				string msg = "";
+				for(int i=0; i<total; i++) {
+					for(int k=0;k<_fragments.Count;k++) {
+						if(_fragments[k]["id"].Equals(id) && (int.Parse(_fragments[k]["num"]) == i)) {
+							msg = msg + _fragments[k]["data"];
+							_fragments.RemoveAt(k);
+							break;
+						}
+					}
+					count++;
+				}
+				Debug.Log($"Got message {msg}");
+				return(JSONNode.Parse(msg));
+			}
+			return((JSONNode) null);
+		}
+
 		private void OnMessage(string s) {
 			Debug.Log ("Got a message " + s);
 			if((s!= null) && !s.Equals ("")) {
 				JSONNode node = JSONNode.Parse(s);
-				Debug.Log ("Parsed it");
 				string op = node["op"];
-				Debug.Log ("Operation is " + op);
+				// Debug.Log ("Operation is " + op);
+				if("fragment".Equals(op)) {
+					node = ProcessFragment(node);
+					if(node == null)
+						return;  // fragment not complete
+					op = node["op"]; // process the completed fragment
+				}
+
 				if("publish".Equals (op)) {
 					string topic = node["topic"];
-					Debug.Log ("Got a message on " + topic);
+					//Debug.Log ("Got a message on " + topic);
 					foreach(Type p in _subscribers) {
 						if(topic.Equals (GetMessageTopic (p))) {
-							Debug.Log ("And will parse it " + GetMessageTopic (p));
+							//Debug.Log ("And will parse it " + GetMessageTopic (p));
 							ROSBridgeMsg msg = ParseMessage(p, node["msg"]);
 							RenderTask newTask = new RenderTask(p, topic, msg);
 							lock(_queueLock) {
@@ -212,14 +261,15 @@ namespace ROSBridgeLib {
 										break;
 									}
 								}
-								if(!found)
+								if(!found) {
 									_taskQ.Add (newTask);
+								}
 							}
 
 						}
 					}
 				} else if("service_response".Equals (op)) {
-					Debug.Log ("Got service response " + node.ToString ());
+					//Debug.Log ("Got service response " + node.ToString ());
 					_serviceName = node["service"];
 					_serviceValues = (node["values"] == null) ? "" : node["values"].ToString ();
 				} else
@@ -256,7 +306,7 @@ namespace ROSBridgeLib {
 		public void CallService(string service, string args) {
 			if (_ws != null) {
 				string s = ROSBridgeMsg.CallService (service, args);
-				Debug.Log ("Sending " + s);
+				//Debug.Log ("Sending " + s);
 				_ws.Send (s);
 			}
 		}

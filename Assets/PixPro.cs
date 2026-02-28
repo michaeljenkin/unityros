@@ -40,8 +40,8 @@ public class Pixpro : ROSBridgeSubscriber {
 		if(sphere == null)
 			Debug.Log ("No /SkySpheree");
 		else {
-			Texture2D.DestroyImmediate (sphere.renderer.material.mainTexture, true);
-			sphere.renderer.material.mainTexture = tex;
+			Texture2D.DestroyImmediate (sphere.GetComponent<Renderer>().material.mainTexture, true);
+			sphere.GetComponent<Renderer>().material.mainTexture = tex;
 
 			Debug.Log ("Texture updated");
 		}
@@ -50,8 +50,8 @@ public class Pixpro : ROSBridgeSubscriber {
 		if(sphere == null)
 			Debug.Log ("No /Cube");
 		else {
-			Texture2D.DestroyImmediate (cube.renderer.material.mainTexture, true);
-			cube.renderer.material.mainTexture = tex;
+			Texture2D.DestroyImmediate (cube.GetComponent<Renderer>().material.mainTexture, true);
+			cube.GetComponent<Renderer>().material.mainTexture = tex;
 			cube.transform.Rotate(0, Time.deltaTime * 50, 0, Space.World);
 
 			Debug.Log ("Cube Texture updated");

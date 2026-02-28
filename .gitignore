@@ -17,6 +17,9 @@ Assets/XR/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 *.log
+*.cs.meta
+*.msgs.meta
+*.mat.meta
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
 *.blend1
