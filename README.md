@@ -1,6 +1,6 @@
 Version 3.3
 
-Updated everything to work with ROS Indigo.  All of the std_msgs are now there, although some of the more less often
+Updated everything to work with ROS Jazzy.  All of the std_msgs are now there, although some of the more less often
 used ones are not fully debugged. 
 
 Cleaned up the repository somewhat, removing files not directly source code related.
