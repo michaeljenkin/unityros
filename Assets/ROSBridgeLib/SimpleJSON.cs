@@ -82,13 +82,17 @@ namespace SimpleJSON
         public virtual JSONNode Remove(JSONNode aNode) { return aNode; }
  
         public virtual IEnumerable<JSONNode> Childs { get { yield break;} }
+        // 4.0 : FIXED DeepChilds to include direct children. Previously it only returned descendants at level 2+, skipping immediate children.
         public IEnumerable<JSONNode> DeepChilds
         {
             get
             {
                 foreach (var C in Childs)
-                    foreach (var D in C.DeepChilds)
+                {
+                    yield return C;  // 4.0 : Yield direct child first
+                    foreach (var D in C.DeepChilds)  // Then yield its descendants
                         yield return D;
+                }
             }
         }
  
@@ -842,12 +846,40 @@ namespace SimpleJSON
             AsInt = aData;
         }
  
+        // 4.0 : FIXED ToString to preserve JSON data types. Numbers, booleans, and null should NOT be quoted.
+        // 4.0 : Previously all values were quoted, turning "123" into "\"123\"" (string instead of number).
         public override string ToString()
         {
+            if (string.IsNullOrEmpty(m_Data))
+                return "\"\"";
+            
+            // Check if it's a JSON literal (number, boolean, null)
+            if (m_Data == "null" || m_Data == "true" || m_Data == "false")
+                return m_Data;  // Return unquoted for JSON compatibility
+            
+            // Check if it's a number (int, float, or double)
+            if (int.TryParse(m_Data, out _) || 
+                float.TryParse(m_Data, out _) || 
+                double.TryParse(m_Data, out _))
+                return m_Data;  // Return unquoted number
+            
+            // Otherwise it's a string, so quote and escape it
             return "\"" + Escape(m_Data) + "\"";
         }
         public override string ToString(string aPrefix)
         {
+            // 4.0 : Same fix as ToString() - preserve JSON types without unnecessary quoting
+            if (string.IsNullOrEmpty(m_Data))
+                return "\"\"";
+            
+            if (m_Data == "null" || m_Data == "true" || m_Data == "false")
+                return m_Data;
+            
+            if (int.TryParse(m_Data, out _) || 
+                float.TryParse(m_Data, out _) || 
+                double.TryParse(m_Data, out _))
+                return m_Data;
+            
             return "\"" + Escape(m_Data) + "\"";
         }
         public override void Serialize (System.IO.BinaryWriter aWriter)

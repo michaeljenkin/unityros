@@ -6,10 +6,13 @@ using SimpleJSON;
  * just a holder for the message topic and message type.
  * 
  * Version History
+ * 4.0 - null
  * 3.1 - changed methods to start with an upper case letter to be more consistent with c#
  * style.
  * 3.0 - modification from hand crafted version 2.0
  * 
+ * @author Marylou DUBOIS
+ * @version 4.0 
  * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
  * @version 3.1
  */
