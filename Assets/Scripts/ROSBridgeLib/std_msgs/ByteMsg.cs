@@ -8,7 +8,7 @@ using SimpleJSON;
  * Version History
  * 3.3 - added to std_msgs for consistency
  * 
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
+ * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
  * @version 3.3
  */
 
