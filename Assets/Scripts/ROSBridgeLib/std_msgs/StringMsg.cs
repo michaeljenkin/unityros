@@ -11,7 +11,7 @@ using SimpleJSON;
  * style.
  * 3.0 - modification from hand crafted version 2.0
  * 
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
+ * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
  * @version 3.3
  */
 

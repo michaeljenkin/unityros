@@ -7,9 +7,10 @@ using ROSBridgeLib.geometry_msgs;
  * Define an Accel message. These have been hand-crafted from the corresponding msg file.
  * 
  * Version History
- *  3.3 - added to std_msgs for consistency
+ #  3.0 - Groovy 
+ *  3.3 - Jazzy - added to std_msgs for consistency
  * 
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
+ * @author Michael Jenkin, Maryloud Dubois, Robert Codd-Downey and Andrew Speers
  * @version 3.3
  */
 

@@ -8,13 +8,12 @@ using ROSBridgeLib.turtlesim;
 
 /**
  * This is a toy example of the Unity-ROS interface talking to the TurtleSim 
- * tutorial (circa Groovy). Note that due to some changes since then this will have
- * to be slightly re-written, but as its a test ....
+ * tutorial (circa Jazzy). 
  * 
- * THis does all the ROS work.
+ * This does all the ROS work.
  * 
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
- * @version 3.0
+ * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
+ * @version 3.3
  **/
 
 public class TurtlesimViewer : MonoBehaviour  {
@@ -22,13 +21,16 @@ public class TurtlesimViewer : MonoBehaviour  {
 	private Boolean _useJoysticks;
 	private Boolean lineOn;
 
-	public string ROSBridgeWS = "ws://10.0.1.63";
+	public string ROSBridgeWS = "ws://10.0.1.63"; // where ROS bridge lives
 
 	// the critical thing here is to define our subscribers, publishers and service response handlers
 	void Start () {
 		FloorTile.Floor (0, 0, 12, 12);
 		_useJoysticks = Input.GetJoystickNames ().Length > 0;
+		Debug.Log("Connecting to " + ROSBridgeWS);
 		ros = new ROSBridgeWebSocketConnection (ROSBridgeWS, 9090);
+		Debug.Log("Result is " + (ros == null));
+
 		ros.AddSubscriber (typeof(Turtle1ColorSensor));
 		ros.AddSubscriber (typeof(Turtle1Pose));
 		ros.AddSubscriber (typeof(Turtle1String));

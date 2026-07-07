@@ -11,6 +11,7 @@ using SimpleJSON;
  * empty, and (ii) someday ROS may actually define a  minimal message.
  * 
  * Version History
+ * 3.3 - Updates for ROS 2 Jazzy
  * 3.1 - changed methods to start with an upper case letter to be more consistent with c#
  * style.
  * 3.0 - modification from hand crafted version 2.0

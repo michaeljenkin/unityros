@@ -7,13 +7,11 @@ using UnityEngine;
 
 /**
  * This is a toy example of the Unity-ROS interface talking to the TurtleSim 
- * tutorial (circa Groovy). Note that due to some changes since then this will have
- * to be slightly re-written, but as its a test ....
+ * tutorial (circa Jazzy). 
  * 
- * This defines the callback that links the pose message. It moves the Dalek with
- * the turtlesim
+ * This defines the callback that links to a string message. 
  * 
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
+ * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
  * @version 3.0
  **/
 
