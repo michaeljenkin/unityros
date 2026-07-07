@@ -21,15 +21,13 @@ using UnityEngine;
  * that comes along.
  * 
  * Version History
- * 4.0 - 
+ * 4.0 - general code cleanup
  * 3.1 - changed methods to start with an upper case letter to be more consistent with c#
  * style.
  * 3.0 - modification from hand crafted version 2.0
  * 
- * @author Marylou DUBOIS
+ * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
  * @version 4.0
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
- * @version 3.1
  */
 
 namespace ROSBridgeLib {
@@ -59,6 +57,7 @@ namespace ROSBridgeLib {
 		};
 		private string _host;
 		private int _port;
+		private bool _debug = false; // reduce or enhance debug output
 		private WebSocket _ws;
 		private System.Threading.Thread _myThread;
 		private List<Type> _subscribers; // our subscribers
@@ -189,34 +188,49 @@ namespace ROSBridgeLib {
 		private void Run() {
 			// 4.0 : Added "ws://" protocol to WebSocket URL. Without it, URL may be invalid depending on WebSocketSharp behavior
 			_ws = new WebSocket("ws://" + _host + ":" + _port);
+			_ws.Log.Level = LogLevel.Debug;
 			_ws.OnMessage += (sender, e) => this.OnMessage(e.Data);
 			_ws.Connect();
 
+			Debug.Log("Connecting to web socket...");
+
+			if(_ws.IsAlive)
+				Debug.Log("...And it looks alive");
+			else	
+				Debug.Log("...But it is not alive");
+
 			foreach(Type p in _subscribers) {
 				_ws.Send(ROSBridgeMsg.Subscribe (GetMessageTopic(p), GetMessageType (p)));
-				Debug.Log ("Sending " + ROSBridgeMsg.Subscribe (GetMessageTopic(p), GetMessageType (p)));
+				if(_debug)
+					Debug.Log ("Sending " + ROSBridgeMsg.Subscribe (GetMessageTopic(p), GetMessageType (p)));
 			}
 			foreach(Type p in _publishers) {
 				_ws.Send(ROSBridgeMsg.Advertise (GetMessageTopic(p), GetMessageType(p)));
-				Debug.Log ("Sending " + ROSBridgeMsg.Advertise (GetMessageTopic(p), GetMessageType(p)));
+				if(_debug)
+					Debug.Log ("Sending " + ROSBridgeMsg.Advertise (GetMessageTopic(p), GetMessageType(p)));
 			}
 			
 			// 4.0 : REPLACED while(true) with while(_run). Now the loop can be interrupted cleanly via Disconnect()
 			while(_run) {
 				Thread.Sleep (10000);
 			}
+			if(_debug)
+				Debug.Log("ROSBridge thread killed");
 		}
 
 		private JSONNode ProcessFragment(JSONNode node) {
-			Debug.Log("Processing a fragment");
 			string id;
 			int num, total;
+			
+			if(_debug)
+				Debug.Log("Processing a fragment");
+	
 			try {
 				id = node["id"];
 				num = int.Parse(node["num"]);
 				total = int.Parse(node["total"]);
 			} catch(Exception e) {
-				Debug.LogError($"4.0 : Fragment parsing failed: {e.Message}");
+				Debug.LogError($"Fragment parsing failed: {e.Message}");
 				return (JSONNode) null;
 			}
 
@@ -257,10 +271,9 @@ namespace ROSBridgeLib {
 				// 4.0 : Protected fragment JSON parse with try/catch. On error, log and return null instead of reparsing
 				try {
 					JSONNode nodex = JSONNode.Parse(msg);
-					Debug.Log("Parsed ok");
 					return(nodex);
 				} catch(Exception e) {
-					Debug.LogError($"4.0 : Failed to parse reassembled fragment: {e.Message}\nMessage: {msg}");
+					Debug.LogError($"Failed to parse reassembled fragment: {e.Message}\nMessage: {msg}");
 					return null;
 				}
 			}
@@ -268,7 +281,8 @@ namespace ROSBridgeLib {
 		}
 
 		private void OnMessage(string s) {
-			Debug.Log ("Got a message " + s);
+			if(_debug)
+				Debug.Log ("Got a message " + s);
 			if((s!= null) && !s.Equals ("")) {
 				// 4.0 : Protected initial JSON.Parse with try/catch. Malformed JSON crashes the thread
 				// 4.0 : Protected initial JSON.Parse with try/catch. Malformed JSON crashes the thread without this.
@@ -276,21 +290,23 @@ namespace ROSBridgeLib {
 				try {
 					node = JSONNode.Parse(s);
 				} catch(Exception e) {
-					Debug.LogError($"4.0 : Failed to parse incoming message: {e.Message}\nMessage: {s}");
+					Debug.LogError($"Failed to parse incoming message: {e.Message}\nMessage: {s}");
 					return;
 				}
 				
 				if(node == null) {
-					Debug.LogError("4.0 : JSONNode.Parse returned null for message: " + s);
+					Debug.LogError("JSONNode.Parse returned null for message: " + s);
 					return;
 				}
 				
 				string op = node["op"];
-				Debug.Log ("Operation is " + op);
+				if(_debug)
+					Debug.Log ("Operation is " + op);
 				if("fragment".Equals(op)) {
 					node = ProcessFragment(node);
 					if(node == null) {
-						Debug.Log("Fragment not yet complete");
+						if(_debug)
+							Debug.Log("Fragment not yet complete");
 						return;  // fragment not complete
 					}
 					op = node["op"]; // process the completed fragment
@@ -300,31 +316,37 @@ namespace ROSBridgeLib {
 					// 4.0 : Added null-check for topic field. Missing topic in message would cause exception.
 					string topic = node["topic"];
 					if(topic == null) {
-						Debug.LogError($"4.0 : Received publish message without topic field: {node.ToString()}");
+						Debug.LogError($"Received publish message without topic field: {node.ToString()}");
 						return;
 					}
 					
-					Debug.Log ("Got a message on " + topic);
-					Debug.Log(node["msg"]);
+					if(_debug) {
+						Debug.Log ("Got a message on " + topic);
+						Debug.Log(node["msg"]);
+					}
 					foreach(Type p in _subscribers) {
-						Debug.Log($"Looking through subscribers {GetMessageTopic(p)}");
+						if(_debug)
+							Debug.Log($"Looking through subscribers {GetMessageTopic(p)}");
 						if(topic.Equals (GetMessageTopic (p))) {
-							Debug.Log ("And will parse it " + GetMessageTopic (p));
-							Debug.Log(node);
+							if(_debug){
+								Debug.Log ("And will parse it " + GetMessageTopic (p));
+								Debug.Log(node);
+							}
 							
 							// 4.0 : Protected ParseMessage with try/catch. If any message constructor fails, log error and skip this message.
 							// 4.0 : Also added null-check for msg field.
 							if(node["msg"] == null) {
-								Debug.LogError($"4.0 : Received publish message without 'msg' field for topic {topic}: {node.ToString()}");
+								Debug.LogError($"Received publish message without 'msg' field for topic {topic}: {node.ToString()}");
 								continue;
 							}
 							
 							ROSBridgeMsg msg = null;
 							try {
 								msg = ParseMessage(p, node["msg"]);
-								Debug.Log($"4.0 : Message parsed successfully for topic {topic}");
+								if(_debug)
+									Debug.Log($"Message parsed successfully for topic {topic}");
 							} catch(Exception e) {
-								Debug.LogError($"4.0 : Failed to parse message for topic {topic}\nSubscriber: {GetMessageTopic(p)}\nMessage content: {node["msg"].ToString()}\nError: {e.Message}\nStack: {e.StackTrace}");
+								Debug.LogError($"Failed to parse message for topic {topic}\nSubscriber: {GetMessageTopic(p)}\nMessage content: {node["msg"].ToString()}\nError: {e.Message}\nStack: {e.StackTrace}");
 								continue;
 							}
 							
@@ -347,7 +369,8 @@ namespace ROSBridgeLib {
 						}
 					}
 				} else if("service_response".Equals (op)) {
-					Debug.Log ("Got service response " + node.ToString ());
+					if(_debug)
+						Debug.Log ("Got service response " + node.ToString ());
 					_serviceName = node["service"];
 					_serviceValues = (node["values"] == null) ? "" : node["values"].ToString ();
 				} else

@@ -13,7 +13,7 @@ using ROSBridgeLib.turtlesim;
  * This does all the ROS work.
  * 
  * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
- * @version 3.3
+ * @version 4.0
  **/
 
 public class TurtlesimViewer : MonoBehaviour  {
@@ -21,21 +21,21 @@ public class TurtlesimViewer : MonoBehaviour  {
 	private Boolean _useJoysticks;
 	private Boolean lineOn;
 
-	public string ROSBridgeWS = "ws://10.0.1.63"; // where ROS bridge lives
+	public string ROSBridgeWS = "10.0.1.63"; // where ROS bridge lives
 
 	// the critical thing here is to define our subscribers, publishers and service response handlers
 	void Start () {
 		FloorTile.Floor (0, 0, 12, 12);
 		_useJoysticks = Input.GetJoystickNames ().Length > 0;
-		Debug.Log("Connecting to " + ROSBridgeWS);
+		Debug.Log("Connecting to " + ROSBridgeWS + ":" + 9090);
 		ros = new ROSBridgeWebSocketConnection (ROSBridgeWS, 9090);
-		Debug.Log("Result is " + (ros == null));
 
 		ros.AddSubscriber (typeof(Turtle1ColorSensor));
 		ros.AddSubscriber (typeof(Turtle1Pose));
 		ros.AddSubscriber (typeof(Turtle1String));
 		ros.AddPublisher (typeof(Turtle1Teleop));
 		ros.AddServiceResponse (typeof(Turtle1ServiceResponse));
+
 		ros.Connect ();
 		ros.CallService ("/turtle1/set_pen", "{\"off\": 0}");
 		lineOn = true;
@@ -55,15 +55,17 @@ public class TurtlesimViewer : MonoBehaviour  {
 		int _button = 0;
 		
 		if(_useJoysticks) {
-			_dx = Input.GetAxis ("Joy0X");
+			_dx = -Input.GetAxis ("Joy0X");
 			_dy = Input.GetAxis ("Joy0Y");
 		} else {
 			_dx = Input.GetAxis("Horizontal");
 			_dy = Input.GetAxis ("Vertical");
 			//Debug.Log ("no joysticks " + _dx + " " + _dy);
 		}
-		float linear = _dy * 0.5f;
-		float angular = -_dx * 0.2f;
+
+		// your joystick may vary
+		float linear = _dy * 2.5f;
+		float angular = -_dx * 1.0f;
 
 		TwistMsg msg = new TwistMsg (new Vector3Msg(linear, 0.0, 0.0), new Vector3Msg(0.0, 0.0, angular));
 
