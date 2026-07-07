@@ -6,8 +6,8 @@ using System.Collections;
  * x-z is the floor. Origin is (x0, y0) and the tile floor is n squares in x
  * and m squares in z.
  * 
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
- * @version 3.0
+ * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
+ * @version 3.3
  */
 
 public static class FloorTile  {

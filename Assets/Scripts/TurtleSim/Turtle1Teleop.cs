@@ -7,11 +7,10 @@ using UnityEngine;
 
 /**
  * This is a toy example of the Unity-ROS interface talking to the TurtleSim 
- * tutorial (circa Groovy). Note that due to some changes since then this will have
- * to be slightly re-written. This defines the velocity message that we will publish
+ * tutorial (circa Jazzy). This defines the velocity message that we will publish
  * 
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
- * @version 3.0
+ * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
+ * @version 3.3
  **/
 
 public class Turtle1Teleop: ROSBridgePublisher {

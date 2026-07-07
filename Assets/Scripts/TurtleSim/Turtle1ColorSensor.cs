@@ -7,13 +7,12 @@ using UnityEngine;
 
 /**
  * This is a toy example of the Unity-ROS interface talking to the TurtleSim 
- * tutorial (circa Groovy). Note that due to some changes since then this will have
- * to be slightly re-written, but as its a test ....
+ * tutorial (circa Jazzy). 
  * 
  * This defines the callback that links the color_sensor message and its callback
  * 
- * @author Michael Jenkin, Robert Codd-Downey and Andrew Speers
- * @version 3.0
+ * @author Michael Jenkin, Marylou Dubois, Robert Codd-Downey and Andrew Speers
+ * @version 3.2
  **/
 
 public class Turtle1ColorSensor : ROSBridgeSubscriber {
