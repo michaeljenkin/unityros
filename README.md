@@ -1,3 +1,20 @@
+Version 4.0
+
+Validated the library end-to-end with a new test scene combining turtlesim
+under ROS and a Unity checkerboard scene with a robot avatar. The test confirms
+bidirectional synchronization: the Unity avatar mirrors turtlesim's pose
+in real time, and cursor-key input captured in Unity is converted into
+Twist commands that drive the turtle in ROS, exactly as in the original
+TurtleSimViewer demo.
+
+![Test scene: the turtle in TurtleSim (right, running under ROS) and its
+corresponding avatar in Unity (left, on the checkerboard) are shown side
+by side. The avatar's position and orientation are updated in real time
+to match the turtle's pose, demonstrating the ROS-to-Unity communication
+bridge.](images/ros-unity-testscene.png)
+
+Reworked the communication layer to make it more robust.
+
 Version 3.3
 
 Updated everything to work with ROS Jazzy.  All of the std_msgs are now there, although some of the more less often
