@@ -1,3 +1,35 @@
+![Test scene: the turtle in TurtleSim (right, running under ROS) and its
+corresponding avatar in Unity (left, on the checkerboard) are shown side
+by side. The avatar's position and orientation are updated in real time
+to match the turtle's pose, demonstrating the ROS-to-Unity communication
+bridge.](images/ros-unity-testscene.png)
+
+Welcome to UnityROS. This is a tool that provides a mapping between ROS 2 
+and the Unity ecosystems to enable solutions to take advantage of the best 
+of both environments. UnityROS relies on rosbridge to do the heavy lifting
+between the two systems. Basically, UnityROS defines a 1:1 mapping between
+ROS message types and C# classes, and then does the mapping. On the Unity
+side the receipt of a message will invoke a method in the rendering thread
+to deal with the receipt of the message.
+
+A demonstration of the tool is included here. It relies on the turtlesim
+package on the ROS side. In some ROS environment (for which you know the ipaddress)
+execute
+
+ros2 run turtlesim turtlesim_node &
+ros2 run rosbridge_server rosbridge_websocket
+
+Then fire up the Unity side. The DalekWorld scene provides a very simple 
+demonstration of the system. You must provide the Turtlesim Viewer script attached to 
+the Main Camera the IP address of the machine running the rosbridge_server (ROS Bridge WS label).
+The status of the connection can be monitored from both the ROS and Unity sides. 
+
+One can control the motion of the turtlesim either through the ROS side (using some teleop node)
+or through the Unity side. From the Unity side the keyboard arrow keys will translate or rotate
+the robot and the T key will toggle the line drawn on the turtlesim_node as the turtle is moved.
+
+Version History
+
 Version 4.0
 
 Validated the library end-to-end with a new test scene combining turtlesim
@@ -7,11 +39,7 @@ in real time, and cursor-key input captured in Unity is converted into
 Twist commands that drive the turtle in ROS, exactly as in the original
 TurtleSimViewer demo.
 
-![Test scene: the turtle in TurtleSim (right, running under ROS) and its
-corresponding avatar in Unity (left, on the checkerboard) are shown side
-by side. The avatar's position and orientation are updated in real time
-to match the turtle's pose, demonstrating the ROS-to-Unity communication
-bridge.](images/ros-unity-testscene.png)
+
 
 Reworked the communication layer to make it more robust.
 
